@@ -4,14 +4,21 @@ import numpy as np
 import tensorflow as tf
 import mediapipe as mp
 import cv2
+import json
 import os
 
 app = Flask(__name__)
 
-MODEL_PATH = 'app/model/v3.1.2.h5'
+BASE_PATH = os.path.dirname(__file__)
+MODEL_PATH = os.path.join(BASE_PATH,'model','v3.1.2.h5')
+P2S_PATH = os.path.join(BASE_PATH,'p2s_index_map.json')
 SEQUENCE_LENGTH = 30
 model = tf.keras.models.load_model(MODEL_PATH)
 mp_holistic = mp.solutions.holistic
+
+with open(P2S_PATH, 'r') as json_file:
+  json_data = json_file.read()
+decoder = json.loads(json_data)
 
 lipsUpperOuter = [61, 185, 40, 39, 37, 0, 267, 269, 270, 409, 291]
 lipsLowerOuter = [146, 91, 181, 84, 17, 314, 405, 321, 375, 291]
@@ -29,11 +36,11 @@ def mp_detection(image, model):
 def extract_keypoints(mp_results):
     #Face
     if mp_results.face_landmarks:
-        face = np.array([[cord.x, cord.y, cord.z] for cord in mp_results.face_landmarks.landmark]).flatten()
-        lips = np.array(face.iloc[lipsIDX]).flatten()
+        face = np.array([[cord.x, cord.y, cord.z] for cord in mp_results.face_landmarks.landmark])
+        lips = np.array(face[lipsIDX]).flatten()
     else:
         face = np.zeros(129)
-    #Pose     
+    #Pose
     if mp_results.pose_landmarks:
         pose = np.array([[cord.x, cord.y, cord.z] for cord in mp_results.pose_landmarks.landmark]).flatten()
     else:
@@ -48,20 +55,18 @@ def extract_keypoints(mp_results):
         lh = np.array([[cord.x, cord.y, cord.z] for cord in mp_results.left_hand_landmarks.landmark]).flatten() 
     else:
         lh = np.zeros(63)
-    return np.concatenate([face,pose,rh,lh])
+    return np.concatenate([lips,lh,pose,rh])
 
-def get_top_3_indices(arr):
-    sorted_indices = sorted(range(len(arr)), key=lambda i: arr[i], reverse=True)
-    return sorted_indices[:3]
-
+def get_top10(result):
+    sorted_idx = sorted(range(len(result)), key=lambda i: result[i], reverse=True)
+    return [decoder[str(idx)] for idx in sorted_idx[:10]]
 
 @app.route('/predict', methods=['POST'])
 def predict():
     f = request.files['video']
     
     #Save Video
-    basepath = os.path.dirname(__file__)
-    videoPath = os.path.join(basepath,'uploads',secure_filename(f.filename))
+    videoPath = os.path.join(BASE_PATH,'uploads',secure_filename(f.filename))
     f.save(videoPath)
     
     with mp_holistic.Holistic(min_detection_confidence=.5, min_tracking_confidence=.5) as holistic_model:
@@ -81,7 +86,7 @@ def predict():
                 landmarks.append(np.zeros(354))
         cap.release()
         cv2.destroyAllWindows()
-
+    
     # Remove Video
     if os.path.exists(videoPath):
         os.remove(videoPath)
@@ -90,8 +95,7 @@ def predict():
     
     result = model.predict(np.expand_dims(landmarks, axis=0))
     
-    print(result)
-    return jsonify('sukses')
+    return jsonify({"Prediciton":get_top10(result[0])})
 
 if __name__ == '__main__':
     app.run()
