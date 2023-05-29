@@ -59,7 +59,7 @@ def extract_keypoints(mp_results):
 
 def get_top10(result):
     sorted_idx = sorted(range(len(result)), key=lambda i: result[i], reverse=True)
-    return [decoder[str(idx)] for idx in sorted_idx[:10]]
+    return [decoder[str(idx)] for idx in sorted_idx[:10]], ['{:.2f}'.format(result[idx]*100) for idx in sorted_idx[:10]]
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -94,8 +94,9 @@ def predict():
         print("The file does not exist")
     
     result = model.predict(np.expand_dims(landmarks, axis=0))
+    top10 = get_top10(result[0])
     
-    return jsonify({"Prediciton":get_top10(result[0])})
+    return jsonify({"prediction":top10[0], "value":top10[1]})
 
 if __name__ == '__main__':
     app.run()
