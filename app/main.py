@@ -12,6 +12,7 @@ app = Flask(__name__)
 BASE_PATH = os.path.dirname(__file__)
 MODEL_PATH = os.path.join(BASE_PATH,'model','v3.1.2.h5')
 P2S_PATH = os.path.join(BASE_PATH,'p2s_index_map.json')
+UPLOAD_PATH = os.path.join(BASE_PATH,'uploads')
 SEQUENCE_LENGTH = 30
 model = tf.keras.models.load_model(MODEL_PATH)
 mp_holistic = mp.solutions.holistic
@@ -66,6 +67,8 @@ def predict():
     f = request.files['video']
     
     #Save Video
+    if not os.path.exists(UPLOAD_PATH):
+        os.makedirs(UPLOAD_PATH)
     videoPath = os.path.join(BASE_PATH,'uploads',secure_filename(f.filename))
     f.save(videoPath)
     
