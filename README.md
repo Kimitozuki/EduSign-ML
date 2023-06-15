@@ -14,7 +14,7 @@ Welcome to EduSign project repository for the machine learning part!
 
 This repository contains the process of developing machine learning as a complementary feature in the EduSign application as part of Bangkit 2023's Product-based Capstone Project.
 
-## How can you clone and run the project??:
+## How can you clone the project??:
 You can clone this repository with this methods:
 * HTTPS: Use Git or SVN checkout by making use of this URL: https://github.com/Kimitozuki/EduSign-ML.git
   ```sh
