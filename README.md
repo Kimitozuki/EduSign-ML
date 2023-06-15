@@ -16,12 +16,12 @@ This repository contains the process of developing machine learning as a complem
 
 ## How can you clone and run the project??:
 You can clone this repository with this methods:
-	- HTTPS: Use Git or SVN checkout by making use of this URL: https://github.com/TheSalmonSushi/EduSign.git
-	   ```sh
-	   git clone https://github.com/Kimitozuki/EduSign-ML.git
-	   ```
-	- GitHub CLI: Write this on the command line: 
-	   ```sh
-	   gh repo clone Kimitozuki/EduSign-ML
-	   ```
+* HTTPS: Use Git or SVN checkout by making use of this URL: https://github.com/Kimitozuki/EduSign-ML.git
+  ```sh
+  git clone https://github.com/Kimitozuki/EduSign-ML.git
+  ```
+* GitHub CLI: Write this on the command line: 
+  ```sh
+  gh repo clone Kimitozuki/EduSign-ML
+  ```
 
