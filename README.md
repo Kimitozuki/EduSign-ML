@@ -32,7 +32,7 @@ You can clone this repository with this methods:
    - [MediaPipe](https://developers.google.com/mediapipe/solutions)
 
 ## API URL Created by CC Team
-Flask API URL:[https://flaskapp-cr-v4-cky5j3e4sq-et.a.run.app/](https://flaskapp-cr-v4-cky5j3e4sq-et.a.run.app/)
+Flask API URL: [https://flaskapp-cr-v4-cky5j3e4sq-et.a.run.app/](https://flaskapp-cr-v4-cky5j3e4sq-et.a.run.app/)
 
 ## Installing FastAPI App
   - Download the repo/clone it. Make it available on your device
