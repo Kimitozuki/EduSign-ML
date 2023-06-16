@@ -33,7 +33,7 @@ You can clone this repository with this methods:
 
 ## Dataset Resources
    - [Kaggle - Google ISLR](https://www.kaggle.com/competitions/asl-signs/overview)
-   - [Kaggle - WASL](https://www.kaggle.com/datasets)
+   - [Kaggle - WASL](https://www.kaggle.com/datasets/risangbaskoro/wlasl-processed)
 
 ## API URL Created by CC Team
 Flask API URL: [https://flaskapp-cr-v4-cky5j3e4sq-et.a.run.app/](https://flaskapp-cr-v4-cky5j3e4sq-et.a.run.app/)
