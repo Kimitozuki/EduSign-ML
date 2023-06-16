@@ -31,10 +31,14 @@ You can clone this repository with this methods:
    - [Flask](https://flask.palletsprojects.com/en/2.3.x/)
    - [MediaPipe](https://developers.google.com/mediapipe/solutions)
 
+## Dataset Resources
+   - [Kaggle - Google ISLR](https://www.kaggle.com/competitions/asl-signs/overview)
+   - [Kaggle - WASL](https://www.kaggle.com/datasets)
+
 ## API URL Created by CC Team
 Flask API URL: [https://flaskapp-cr-v4-cky5j3e4sq-et.a.run.app/](https://flaskapp-cr-v4-cky5j3e4sq-et.a.run.app/)
 
-## Installing FastAPI App
+## Installing FlaskAPI App
   - Download the repo/clone it. Make it available on your device
   - Open terminal and go to the project's app directory
   - Type `python -m venv env` and press enter (create virtual environment)
@@ -48,7 +52,7 @@ Flask API URL: [https://flaskapp-cr-v4-cky5j3e4sq-et.a.run.app/](https://flaskap
 |:--------:|:------:|:-----------------------------------:|:------------------------------------------:|
 |     /predict    |  POST  |                 Video file:  'video'               | HTTP POST REQUEST Prediction Endpoint |
 
-## How to predict image with Postman
+## How to predict video with Postman
   - Open Postman App
   - Enter URL request bar with `http://127.0.0.1:8000/predict`
   - Select method POST
@@ -56,3 +60,6 @@ Flask API URL: [https://flaskapp-cr-v4-cky5j3e4sq-et.a.run.app/](https://flaskap
   - Change key from form-data with file, with name `video`
   - Input the video that you want predict as a value of the key
   - Send the request
+
+## Model Architecture
+![image](https://github.com/Kimitozuki/EduSign-ML/blob/main/asset/ModelArchitecture.jpg)
