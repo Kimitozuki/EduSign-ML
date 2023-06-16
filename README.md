@@ -25,3 +25,34 @@ You can clone this repository with this methods:
   gh repo clone Kimitozuki/EduSign-ML
   ```
 
+## Technology Used for ML Repo
+   - [Tensorflow](https://www.tensorflow.org/)
+   - [Python](https://www.python.org/)
+   - [Flask](https://flask.palletsprojects.com/en/2.3.x/)
+   - [MediaPipe](https://developers.google.com/mediapipe/solutions)
+
+## API URL Created by CC Team
+Flask API URL:[https://flaskapp-cr-v4-cky5j3e4sq-et.a.run.app/](https://flaskapp-cr-v4-cky5j3e4sq-et.a.run.app/)
+
+## Installing FastAPI App
+  - Download the repo/clone it. Make it available on your device
+  - Open terminal and go to the project's app directory
+  - Type `python -m venv env` and press enter (create virtual environment)
+  - For Windows user, type `env\Scripts\activate`. For Linux, type `source ./env/bin/activate` (accessing the virtual environment)
+  - Type `pip install -r requirements.txt` (installing the requirements)
+  - Serve the app by typing `python main.py`
+  - It will run on `http://127.0.0.1:5000`
+
+## Sign Language Recognition Endpoint
+| Endpoint | Method |           Body Sent          |                 Description                |
+|:--------:|:------:|:-----------------------------------:|:------------------------------------------:|
+|     /predict    |  POST  |                 Video file:  'video'               | HTTP POST REQUEST Prediction Endpoint |
+
+## How to predict image with Postman
+  - Open Postman App
+  - Enter URL request bar with `http://127.0.0.1:8000/predict`
+  - Select method POST
+  - Go to Body tab and select form-data
+  - Change key from form-data with file, with name `video`
+  - Input the video that you want predict as a value of the key
+  - Send the request
