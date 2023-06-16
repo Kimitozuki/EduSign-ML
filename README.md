@@ -52,7 +52,7 @@ Flask API URL: [https://flaskapp-cr-v4-cky5j3e4sq-et.a.run.app/](https://flaskap
 |:--------:|:------:|:-----------------------------------:|:------------------------------------------:|
 |     /predict    |  POST  |                 Video file:  'video'               | HTTP POST REQUEST Prediction Endpoint |
 
-## How to predict image with Postman
+## How to predict video with Postman
   - Open Postman App
   - Enter URL request bar with `http://127.0.0.1:8000/predict`
   - Select method POST
