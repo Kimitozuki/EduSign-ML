@@ -63,3 +63,6 @@ Flask API URL: [https://flaskapp-cr-v4-cky5j3e4sq-et.a.run.app/](https://flaskap
 
 ## Model Architecture
 ![image](https://github.com/Kimitozuki/EduSign-ML/blob/main/asset/ModelArchitecture.jpg)
+
+## Classification Flow
+![image](https://github.com/Kimitozuki/EduSign-ML/blob/main/asset/ClassificationFlow.jpg)
